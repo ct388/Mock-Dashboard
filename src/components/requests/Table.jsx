@@ -26,6 +26,7 @@ function getInitials(name) {
 
 export default function Table({
   requests,
+  onOpenRequest,
 }) {
   if (requests.length === 0) {
     return (
@@ -71,6 +72,9 @@ export default function Table({
             {requests.map((request) => (
               <tr
                 key={request.id}
+                onClick={() =>
+                  onOpenRequest(request)
+                }
               >
 
                 <td>

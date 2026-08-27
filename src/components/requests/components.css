@@ -63,6 +63,36 @@
     0 0 0 3px var(--color-primary-light);
 }
 
+/* Filtering */
+.request-filter-select {
+  height: 40px;
+  min-width: 150px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  padding: 8px 36px 8px 12px;
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.request-filter-select:hover {
+  border-color: var(--color-border-hover);
+}
+
+.request-filter-select:focus {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 0 3px var(--color-primary-light);
+}
+
 /* Table */
 
 .request-table-empty {
