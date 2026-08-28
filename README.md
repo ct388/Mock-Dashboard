@@ -1,6 +1,6 @@
 # Mock Workflow Management Dashboard
 
-A responsive front-end workflow management dashboard built with Vite + Reac to demonstrate data-driven designs and state management (using React state). The application allows users to view, search, filter, and manage requests through n interactive interface.
+A responsive front-end workflow management dashboard built with Vite + Reac to demonstrate data-driven designs and state management (using React state). The application allows users to view, search, filter, and manage requests through an interactive interface.
 
 
 ## Project Features
@@ -13,7 +13,7 @@ A responsive front-end workflow management dashboard built with Vite + Reac to d
 ![](requests1.png)
 ![](requests2.png)
 
-    - Note: Activity timeline within a request detail drawer updates with *Status* and *Priority* changes.
+    - Note: Activity timeline within request detail drawer updates with *Status* and *Priority* changes.
 
 ## Possible future improvements
 - Additional filters for Requests table
