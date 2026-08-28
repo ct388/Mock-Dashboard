@@ -1,16 +1,22 @@
-# React + Vite
+# Mock Workflow Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive front-end workflow management dashboard built with Vite + Reac to demonstrate data-driven designs and state management (using React state). The application allows users to view, search, filter, and manage requests through n interactive interface.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Project Features
 
-## React Compiler
+1. Dashboard home page: provides a quick snapshot/summary of monthly requests. 
+![](home.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    - Note:  KPI Cards and listed requests in the Attention panel are clickable, routing user to Requests page with preselected filters or preselected drawer (done with URL query parameters).
+2. Requests page: displays table of all requests.
+![](requests1.png)
+![](requests2.png)
 
-## Expanding the Oxlint configuration
+    - Note: Activity timeline within a request detail drawer updates with *Status* and *Priority* changes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Possible future improvements
+- Additional filters for Requests table
+- Add Request creation/editing
+- Pagination
+

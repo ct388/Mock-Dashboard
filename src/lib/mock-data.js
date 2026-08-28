@@ -6,7 +6,7 @@ export const homePageKPIData = [
     description: "",
   },
   {
-    label: "In Review",
+    label: "Needs Review",
     change: "",
     direction: "",
     description: "",
@@ -19,8 +19,8 @@ export const homePageKPIData = [
   },
   {
     label: "Complete Requests",
-    change: "-2.8%",
-    direction: "down",
+    change: "+50.0%",
+    direction: "up",
     description: "vs. last month",
   },
 ];
@@ -55,7 +55,7 @@ export const requests = [
     type: "Documentation",
     priority: "High",
     coordinator: "You",
-    status: "In review",
+    status: "Needs review",
     updated: "2 hours ago",
 
     activity: [
@@ -65,7 +65,7 @@ export const requests = [
         time: "2 hours ago",
       },
       {
-        text: "Request moved to In review",
+        text: "Request moved to Needs review",
         user: "Maya Patel",
         time: "Yesterday",
       },
@@ -116,9 +116,32 @@ export const requests = [
         time: "1 day ago",
       },
       {
-        text: "Request moved to In review",
+        text: "Request moved to Needs review",
         user: "Sarah Chen",
         time: "2 days ago",
+      },
+    ],
+  },
+
+    {
+    id: "10220",
+    customer: "Laura Edwards",
+    type: "Change request",
+    priority: "High",
+    coordinator: "You",
+    status: "Complete",
+    updated: "3 days ago",
+
+    activity: [
+      {
+        text: "Request marked as Complete",
+        user: "You",
+        time: "3 day ago",
+      },
+      {
+        text: "Request assigned to You",
+        user: "Sarah Chen",
+        time: "5 days ago",
       },
     ],
   },

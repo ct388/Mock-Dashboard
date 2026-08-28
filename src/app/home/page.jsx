@@ -1,4 +1,4 @@
-import { Users, ClipboardList, CheckCircle2, UserRound, } from "lucide-react";
+import { CirclePlus, Eye, Clock, CircleCheck, } from "lucide-react";
 
 import Header from "@/components/home/Header";
 import KPICard from "@/components/home/KPICard";
@@ -11,17 +11,23 @@ import '@/app/home/page.css'
 import '@/components/home/components.css'
 
 export default function HomePage() {
+  const statuses = {
+    "Open Requests": "Open",
+    "Needs Review": "Needs review",
+    "Waiting": "Waiting",
+    "Complete Requests": "Complete",
+};
 
   const KPICardIcons = {
-    "Open Requests": Users,
-    "In Review": ClipboardList,
-    "Waiting": CheckCircle2,
-    "Complete Requests": UserRound,
+    "Open Requests": CirclePlus,
+    "Needs Review": Eye,
+    "Waiting": Clock,
+    "Complete Requests": CircleCheck,
   };
 
   const KPICardValues = {
     "Open Requests": requests.filter(req => req.status === "Open").length,
-    "In Review": requests.filter(req => req.status === "In Review").length,
+    "Needs Review": requests.filter(req => req.status === "Needs review").length,
     "Waiting": requests.filter(req => req.status === "Waiting").length,
     "Complete Requests": requests.filter(req => req.status === "Complete").length,
   };
@@ -41,6 +47,7 @@ export default function HomePage() {
               {...card}
               icon={KPICardIcons[card.label]}
               value={KPICardValues[card.label]}
+              link={`/requests?status=${statuses[card.label]}`}
             />
           ))}
         </section>

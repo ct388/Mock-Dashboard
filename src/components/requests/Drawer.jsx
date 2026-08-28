@@ -5,7 +5,7 @@ import Timeline from "@/components/requests/Timeline";
 
 const statusClasses = {
   "Open": "request-drawer-status-open",
-  "In review": "request-drawer-status-review",
+  "Needs review": "request-drawer-status-review",
   "Waiting": "request-drawer-status-waiting",
   "Complete": "request-drawer-status-complete",
 };

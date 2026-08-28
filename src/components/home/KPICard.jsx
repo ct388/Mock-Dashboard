@@ -1,18 +1,27 @@
-export default function KPICard({
+import { useNavigate } from "react-router-dom";
+
+export default function KPICard ({
   label,
   change,
   direction,
   description,
   icon, 
   value,
+  link,
 }) {
   const positive = direction === "up";
   const negative = direction === "down";
 
   const Icon = icon;
 
+  const navigate = useNavigate();
+
+  const goToTable = () => {
+    navigate(link || "/");
+  };
+
   return (
-    <button className="kpi-card">
+    <button onClick={goToTable} className="kpi-card">
 
       <div className="kpi-card-header">
         <p className="kpi-card-label">

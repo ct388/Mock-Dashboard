@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import Header from "@/components/home/Header";
 import SearchBar from "@/components/requests/SearchBar";
@@ -11,7 +12,7 @@ import { requests as initialRequests, coordinators, } from "@/lib/mock-data";
 
 const statuses = [
   "Open",
-  "In review",
+  "Needs review",
   "Waiting",
   "Complete",
 ];
@@ -31,16 +32,30 @@ function createActivity(text) {
 }
 
 export default function RequestsPage() {
+  const [searchParams] = useSearchParams();
 
   const [requestList, setRequestList] = useState(initialRequests);
 
   const [search, setSearch] = useState("");
 
-  const [status, setStatus] = useState("All");
+  const [status, setStatus] = useState(
+    searchParams.get("status")
+      ? searchParams.get("status")
+      : "All statuses"
+    );
 
-  const [priority, setPriority] = useState("All");
+  const [priority, setPriority] = useState(
+    searchParams.get("priority")
+      ? searchParams.get("priority")
+      : "All priorities"
+    );
 
-  const [selectedRequest, setSelectedRequest] = useState(null);
+  const urlRequest = searchParams.get("request");  
+  const [selectedRequest, setSelectedRequest] = useState(
+    urlRequest
+      ? initialRequests.find((req) => req.id === urlRequest)
+      : null
+  );
 
   const filteredRequests = requestList.filter(
     (request) => {
@@ -64,11 +79,11 @@ export default function RequestsPage() {
           .includes(query);
 
       const matchesStatus =
-        status === "All" ||
+        status === "All statuses" ||
         request.status === status;
 
       const matchesPriority =
-        priority === "All" ||
+        priority === "All priorities" ||
         request.priority === priority;
 
       return (

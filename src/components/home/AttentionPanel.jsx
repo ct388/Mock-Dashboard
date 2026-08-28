@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { requests } from "@/lib/mock-data";
 
@@ -10,6 +11,12 @@ export default function AttentionPanel() {
   };
 
   const actionItems = requests.filter(req => req.coordinator === "You");
+
+  const navigate = useNavigate(); 
+   
+  const goToTable = (link) => {
+    navigate(link || "/");
+  };
 
   return (
     <section className="attention-panel">
@@ -29,6 +36,7 @@ export default function AttentionPanel() {
       <div className="attention-panel-list">
         {actionItems.map((item) => (
           <button className="attention-panel-item"
+            onClick={() => goToTable(`/requests?request=${item.id}`)}
             key={item.id}
           >
             <span
@@ -53,7 +61,9 @@ export default function AttentionPanel() {
       </div>
      
       <footer>
-        <button className="attention-footer">
+        <button className="attention-footer"
+          onClick={() => goToTable(`/requests`)}
+        >
           View All Requests
         </button>
       </footer>

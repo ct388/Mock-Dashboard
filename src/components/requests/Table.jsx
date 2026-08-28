@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 
 const statusClasses = {
   "Open": "request-status-open",
-  "In review": "request-status-review",
+  "Needs review": "request-status-review",
   "Waiting": "request-status-waiting",
   "Complete": "request-status-complete",
 };
