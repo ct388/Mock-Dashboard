@@ -17,9 +17,6 @@ const priorityClasses = {
 };
 
 function getInitials(name) {
-  if (name === "You") {
-    return "CT" // hard-coded for current user
-  }
   return name
     .split(" ")
     .map((part) => part[0])

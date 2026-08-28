@@ -37,7 +37,7 @@ export default function HomePage() {
       <div className="home-page-container">
         <Header 
           date="Monday, August 24"
-          title="Good afternoon, Cindy"
+          title="Good afternoon"
         />
 
         <section className="home-page-kpis">
