@@ -216,8 +216,7 @@ export default function Drawer({
                 </h3>
               </div>
 
-              <Timeline
-              />
+              <Timeline activity={selectedRequest.activity}/>
             </section>
 
           </div>

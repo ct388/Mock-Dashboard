@@ -51,6 +51,12 @@ export default function AttentionPanel() {
           </button>
         ))}
       </div>
+     
+      <footer>
+        <button className="attention-footer">
+          View All Requests
+        </button>
+      </footer>
     </section>
   );
 }

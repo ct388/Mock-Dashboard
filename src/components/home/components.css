@@ -152,6 +152,8 @@
 
 /* Attention panel */
 .attention-panel {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--color-surface);
@@ -185,6 +187,7 @@
 }
 
 .attention-panel-list {
+  flex: 1;
   margin-top: 24px;
 }
 
@@ -275,3 +278,24 @@
   transform: translateX(2px);
 }
 
+.attention-footer {
+  width: 100%;
+  margin-top: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  background: var(--color-primary-light);
+  padding: 10px;
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.attention-footer:hover {
+  border-color: var(--color-border-hover);
+  background: #fbfdff;
+}
