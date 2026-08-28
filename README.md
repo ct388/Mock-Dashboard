@@ -2,6 +2,9 @@
 
 A responsive front-end workflow management dashboard built with Vite + Reac to demonstrate data-driven designs and state management (using React state). The application allows users to view, search, filter, and manage requests through an interactive interface.
 
+## Deployed App
+
+[Github Pages Preview](https://ct388.github.io/Mock-Dashboard/)
 
 ## Project Features
 
