@@ -5,7 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Mock-Dashboard",
+  base: "./Mock-Dashboard",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
