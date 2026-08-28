@@ -4,10 +4,16 @@ export default function SearchBar({
   search,
   status,
   priority,
+  statuses,
+  priorities,
   onSearch,
   onStatusChange,
   onPriorityChange,
 }) {
+  
+  const allStatuses = ["All statuses", ...statuses];
+  const allPriorities = ["All priorities", ...priorities];
+
   return (
     <div className="request-search-bar">
 
@@ -34,25 +40,11 @@ export default function SearchBar({
           onStatusChange(event.target.value)
         }
       >
-        <option value="All">
-          All statuses
+      {allStatuses.map((status) => (
+        <option value={status} key={status}>
+          {status}
         </option>
-
-        <option value="Open">
-          Open
-        </option>
-
-        <option value="In review">
-          In review
-        </option>
-
-        <option value="Waiting">
-          Waiting
-        </option>
-
-        <option value="Complete">
-          Complete
-        </option>
+      ))}
       </select>
 
       <select className="request-filter-select"
@@ -61,21 +53,11 @@ export default function SearchBar({
           onPriorityChange(event.target.value)
         }
       >
-        <option value="All">
-          All priorities
+      {allPriorities.map((priority) => (
+        <option value={priority} key={priority}>
+          {priority}
         </option>
-
-        <option value="High">
-          High
-        </option>
-
-        <option value="Medium">
-          Medium
-        </option>
-
-        <option value="Low">
-          Low
-        </option>
+      ))}
       </select>
 
     </div>

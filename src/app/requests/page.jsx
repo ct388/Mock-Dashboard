@@ -3,12 +3,36 @@ import { useState } from "react";
 import Header from "@/components/home/Header";
 import SearchBar from "@/components/requests/SearchBar";
 import Table from "@/components/requests/Table";
+import Drawer from "@/components/requests/Drawer";
 import '@/app/requests/page.css'
 import '@/components/requests/components.css'
 
-import { requests } from "@/lib/mock-data";
+import { requests as initialRequests, coordinators, } from "@/lib/mock-data";
+
+const statuses = [
+  "Open",
+  "In review",
+  "Waiting",
+  "Complete",
+];
+
+const priorities = [
+  "High",
+  "Medium",
+  "Low",
+];
+
+function createActivity(text) {
+  return {
+    text,
+    user: "You",
+    time: "Just now",
+  };
+}
 
 export default function RequestsPage() {
+
+  const [requestList, setRequestList] = useState(initialRequests);
 
   const [search, setSearch] = useState("");
 
@@ -16,8 +40,9 @@ export default function RequestsPage() {
 
   const [priority, setPriority] = useState("All");
 
+  const [selectedRequest, setSelectedRequest] = useState(null);
 
-  const filteredRequests = requests.filter(
+  const filteredRequests = requestList.filter(
     (request) => {
       const query = search
         .trim()
@@ -66,6 +91,77 @@ export default function RequestsPage() {
     setPriority(value);
   }
 
+  function handleStatusChange(
+    requestId,
+    newStatus
+  ) {
+    setRequestList((current) =>
+      current.map((request) => {
+        if (request.id !== requestId) {
+          return request;
+        }
+
+        if (request.status === newStatus) {
+          return request;
+        }
+
+        const updatedRequest = {
+          ...request,
+          status: newStatus,
+          updated: "Just now",
+
+          activity: [
+            createActivity(
+              `Request moved to ${newStatus}`
+            ),
+            ...request.activity,
+          ],
+        };
+
+        setSelectedRequest(updatedRequest);
+
+        return updatedRequest;
+      })
+    );
+  }
+
+  function handleCoordinatorChange(
+    requestId,
+    newCoordinator
+  ) {
+    setRequestList((current) =>
+      current.map((request) => {
+        if (request.id !== requestId) {
+          return request;
+        }
+
+        if (
+          request.coordinator ===
+          newCoordinator
+        ) {
+          return request;
+        }
+
+        const updatedRequest = {
+          ...request,
+          coordinator: newCoordinator,
+          updated: "Just now",
+
+          activity: [
+            createActivity(
+              `Request assigned to ${newCoordinator}`
+            ),
+            ...request.activity,
+          ],
+        };
+
+        setSelectedRequest(updatedRequest);
+
+        return updatedRequest;
+      })
+    );
+  }
+
   return (
     <main className="requests-page">
 
@@ -81,6 +177,8 @@ export default function RequestsPage() {
             search={search}
             status={status}
             priority={priority}
+            statuses={statuses}
+            priorities={priorities}
             onSearch={handleSearch}
             onStatusChange={handleStatusFilterChange}
             onPriorityChange={handlePriorityFilterChange}
@@ -90,10 +188,22 @@ export default function RequestsPage() {
         <div className="requests-page-table">
           <Table
             requests={filteredRequests}
+            onOpenRequest={setSelectedRequest}
           />
         </div>
 
       </div>
+
+      <Drawer
+        selectedRequest={selectedRequest}
+        coordinators={coordinators}
+        statuses={statuses}
+        onClose={() =>
+          setSelectedRequest(null)
+        }
+        onStatusChange={handleStatusChange}
+        onCoordinatorChange={handleCoordinatorChange}
+      />
 
     </main>
   );
